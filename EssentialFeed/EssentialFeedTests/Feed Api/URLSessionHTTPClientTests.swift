@@ -31,8 +31,20 @@ class URLSessionHTTPClient {
 
 class URLSessionHTTPClientTests: XCTestCase {
 
-    func test_getFromURL_performsGETRequestWithURL() {
+    override func setUp() {
+        super.setUp()
+        
         URLProtocolStub.startInterceptingRequests()
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+        
+        URLProtocolStub.stopInterceptingRequests()
+    }
+    
+    func test_getFromURL_performsGETRequestWithURL() {
+        
         let url = URL(string: "http://any-url.com")!
         let exp = expectation(description: "Wait for request")
         
@@ -43,16 +55,15 @@ class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
         
-        URLSessionHTTPClient().get(from: url) {
+        makeSUT().get(from: url) {
             _ in
         }
         
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequests()
     }
     
     func test_getFromURL_failsOnRequestError() {
-        URLProtocolStub.startInterceptingRequests()
+        
         let url = URL(string: "http://any-url.com")!
         let error = NSError(domain: "any error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
@@ -61,7 +72,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
         let exp = expectation(description: "Wait for completion")
 
-        sut.get(from: url) { result in
+        makeSUT().get(from: url) { result in
             switch result {
             case let .failure(receivedError as NSError):
                 XCTAssertEqual(receivedError.domain, error.domain)
@@ -74,9 +85,20 @@ class URLSessionHTTPClientTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequests()
     }
 
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> URLSessionHTTPClient {
+        let sut  = URLSessionHTTPClient()
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
+        }
+    }
+    
     // MARK: - Helpers
 
     private class URLProtocolStub: URLProtocol {
