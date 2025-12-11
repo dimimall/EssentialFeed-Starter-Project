@@ -75,13 +75,13 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let item1 = makeItem(
             id: UUID(),
-            imageURL: URL(string: "http://a-url.com")!)
+            image: URL(string: "http://a-url.com")!)
         
         let item2 = makeItem(
             id: UUID(),
             description: "a description",
             location: "a location",
-            imageURL: URL(string: "http://another-url.com")!)
+            image: URL(string: "http://another-url.com")!)
         
         let items = [item1.model, item2.model]
         
@@ -116,15 +116,15 @@ final class RemoteFeedLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String:Any]){
+    func makeItem(id: UUID, description: String? = nil, location: String? = nil, image: URL) -> (model: FeedItem, json: [String:Any]){
         
-        let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+        let item = FeedItem(id: id, description: description, location: location, image: image)
         
         let json = [
             "id": id.uuidString,
             "description": description,
             "location": location,
-            "image": imageURL.absoluteString
+            "image": image.absoluteString
         ].reduce(into: [String:Any]()){ (acc,e) in
             if let value = e.value { acc[e.key] = value }
         }

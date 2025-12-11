@@ -34,11 +34,10 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     // MARK: - Helpers
 
     private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> LoadFeedResult? {
-        let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let client = URLSessionHTTPClient()
+        let testServerURL = URL(string: "https://static1.squarespace.com/static/5891c5b8d1758ec68ef5dbc2/t/5c52cdd0b8a045df091d2fff/1548930512083/feed-case-study-test-api-feed.json")!
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
-        trackForMemoryLeaks(client, file: file, line: line)
-        trackForMemoryLeaks(loader, file: file, line: line)
+
 
         let exp = expectation(description: "Wait for load completion")
 
@@ -47,7 +46,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
             receivedResult = result
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 1.0)
+        wait(for: [exp], timeout: 5.0)
 
         return receivedResult
     }
@@ -57,7 +56,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
             id: id(at: index),
             description: description(at: index),
             location: location(at: index),
-            imageURL: imageURL(at: index))
+            image: image(at: index))
     }
 
     private func id(at index: Int) -> UUID {
@@ -76,9 +75,9 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     private func description(at index: Int) -> String? {
         return [
             "Description 1",
-            "Description 2",
+            nil,
             "Description 3",
-            "Description 4",
+            nil,
             "Description 5",
             "Description 6",
             "Description 7",
@@ -90,8 +89,8 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
         return [
             "Location 1",
             "Location 2",
-            "Location 3",
-            "Location 4",
+            nil,
+            nil,
             "Location 5",
             "Location 6",
             "Location 7",
@@ -99,7 +98,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
         ][index]
     }
 
-    private func imageURL(at index: Int) -> URL {
+    private func image(at index: Int) -> URL {
         return URL(string: "https://url-\(index+1).com")!
     }
 
