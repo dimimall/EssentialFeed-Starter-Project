@@ -7,11 +7,11 @@
 
 import Foundation
 
-class RemoteFeedLoader {
+public class RemoteFeedLoader {
     let client: HTTPClient
     let url: URL
     
-    init(url: URL, client: HTTPClient) {
+    public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
@@ -27,14 +27,23 @@ class RemoteFeedLoader {
             
             switch result {
             case let .success(data, response):
-                completion(try! FeedItemsMapper.map(data, response))
+                print("STATUS:", response.statusCode)
+                print("BODY:", String(data: data, encoding: .utf8) ?? "nil")
+                do {
+                    let items = try FeedItemsMapper.map(data, from: response)
+                    completion(items)
+                }
+                catch {
+                    completion(.failure(Error.invalidData))
+                }
+
             case .failure:
-                completion(.failure(Error.connectivity))
+                completion(.failure(Error.invalidData))
             }
         }
     }
     
-    typealias Result = LoadFeedResult
+    public typealias Result = LoadFeedResult
         
 }
 
