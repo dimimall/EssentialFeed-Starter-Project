@@ -8,7 +8,7 @@
 import XCTest
 @testable import EssentialFeed
 
-final class RemoteFeedLoaderTests: XCTestCase {
+final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 
     func test_init() {
         
@@ -116,9 +116,9 @@ final class RemoteFeedLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    func makeItem(id: UUID, description: String? = nil, location: String? = nil, image: URL) -> (model: FeedItem, json: [String:Any]){
+    func makeItem(id: UUID, description: String? = nil, location: String? = nil, image: URL) -> (model: FeedImage, json: [String:Any]){
         
-        let item = FeedItem(id: id, description: description, location: location, image: image)
+        let item = FeedImage(id: id, description: description, location: location, url: image)
         
         let json = [
             "id": id.uuidString,

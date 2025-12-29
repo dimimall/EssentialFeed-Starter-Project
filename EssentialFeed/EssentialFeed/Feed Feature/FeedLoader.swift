@@ -5,11 +5,9 @@
 import Foundation
 
 public enum LoadFeedResult {
-	case success([FeedItem])
+	case success([FeedImage])
 	case failure(Error)
 }
-
-//extension LoadFeedResult: Equatable where Error: Equatable {}
 
 public protocol FeedLoader {
 	func load(completion: @escaping (LoadFeedResult) -> Void)
