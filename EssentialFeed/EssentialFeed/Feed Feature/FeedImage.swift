@@ -5,11 +5,10 @@
 import Foundation
 
 public struct FeedItem: Equatable {
-	let id: UUID
-	let description: String?
-	let location: String?
-	let image: URL
-    
+	public let id: UUID
+	public let description: String?
+	public let location: String?
+	public let image: URL
     
     public init(id: UUID, description: String?, location: String?, image: URL) {
         self.id = id
