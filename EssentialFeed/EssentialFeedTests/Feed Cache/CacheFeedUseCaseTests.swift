@@ -17,9 +17,6 @@ class LocalFeedLoader {
         return 7
     }
     
-    public typealias SaveResult = Error?
-    public typealias LoadResult = LoadFeedResult
-    
     init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
@@ -36,6 +33,10 @@ class LocalFeedLoader {
 }
 
 extension LocalFeedLoader: FeedLoader {
+    
+    public typealias SaveResult = Error?
+    public typealias LoadResult = LoadFeedResult
+    
     public func save(_ items: [FeedImage], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
