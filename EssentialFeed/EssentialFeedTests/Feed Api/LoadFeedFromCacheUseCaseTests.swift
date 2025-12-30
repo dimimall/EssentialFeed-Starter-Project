@@ -64,13 +64,13 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         })
     }
     
-    func test_load_deletesCacheOnRetrievalError() {
+    func test_load_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
         sut.load { _ in }
         store.completeRetrieval(with: anyNSError())
         
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
         
     }
     
@@ -92,7 +92,7 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
         
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
     }
     
     func test_load_deletesCacheOnSevenDaysOldCache() {
@@ -133,6 +133,8 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         XCTAssertTrue(receivedResults.isEmpty)
     }
+    
+    
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
         let store = FeedStoreSpy()
