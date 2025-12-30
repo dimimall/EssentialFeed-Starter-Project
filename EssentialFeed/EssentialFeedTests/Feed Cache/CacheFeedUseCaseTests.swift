@@ -35,7 +35,7 @@ class LocalFeedLoader {
     
 }
 
-extension LocalFeedLoader {
+extension LocalFeedLoader: FeedLoader {
     public func save(_ items: [FeedImage], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
@@ -55,9 +55,7 @@ extension LocalFeedLoader {
             completion(error)
         }
     }
-}
-
-extension LocalFeedLoader {
+    
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
@@ -88,6 +86,7 @@ extension LocalFeedLoader {
         }
     }
 }
+
 
 private extension Array where Element == FeedImage {
     func toLocal() -> [LocalFeedImage] {
