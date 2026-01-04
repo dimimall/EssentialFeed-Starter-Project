@@ -77,6 +77,7 @@
 				CodableFeedStore.swift,
 				CodableFeedStoreTests.swift,
 				FeedCachePolicy.swift,
+				FeedStoreSpecs.swift,
 				Helpers/FeedCacheTestHelpers.swift,
 				Helpers/SharedTestHelpers.swift,
 				LocalFeedLoader.swift,
