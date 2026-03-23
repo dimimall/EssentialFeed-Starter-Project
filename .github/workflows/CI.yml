@@ -23,7 +23,7 @@ jobs:
       run: |
         xcodebuild clean test \
           -project EssentialFeed/EssentialFeed.xcodeproj \
-          -scheme EssentialFeed \
+          -scheme CI_macOS \
           -destination 'platform=macOS'
 
 

@@ -1,35 +1,20 @@
 //
-//  XCTestCase+FailableInsertFeedStoreSpecs.swift
-//  EssentialFeedTests
-//
-//  Created by Dimitra Malliarou on 5/1/26.
+//  Copyright © 2019 Essential Developer. All rights reserved.
 //
 
 import XCTest
+import EssentialFeed
 
-final class XCTestCase_FailableInsertFeedStoreSpecs: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+extension FailableInsertFeedStoreSpecs where Self: XCTestCase {
+	func assertThatInsertDeliversErrorOnInsertionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
+		let insertionError = insert((uniqueImageFeed().local, Date()), to: sut)
+		
+		XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error", file: file, line: line)
+	}
+	
+	func assertThatInsertHasNoSideEffectsOnInsertionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
+		insert((uniqueImageFeed().local, Date()), to: sut)
+		
+		expect(sut, toRetrieve: .success(.none), file: file, line: line)
+	}
 }
