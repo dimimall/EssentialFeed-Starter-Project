@@ -13,7 +13,6 @@ class FeedStoreSpy: FeedStore {
 	}
 	
 	private(set) var receivedMessages = [ReceivedMessage]()
-	
 	private var deletionCompletions = [DeletionCompletion]()
 	private var insertionCompletions = [InsertionCompletion]()
 	private var retrievalCompletions = [RetrievalCompletion]()
