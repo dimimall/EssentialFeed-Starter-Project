@@ -229,7 +229,6 @@
 		0D30474D2FA100BB00E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Helpers/HTTPClientSpy.swift,
 				Helpers/URLProtocolStub.swift,
 				URLSessionHTTPClientTests.swift,
 			);
