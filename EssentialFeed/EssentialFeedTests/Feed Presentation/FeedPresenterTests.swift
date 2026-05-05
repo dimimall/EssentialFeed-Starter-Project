@@ -11,6 +11,14 @@ class FeedPresenterTests: XCTestCase {
 		XCTAssertEqual(FeedPresenter.title, localized("FEED_VIEW_TITLE"))
 	}
 
+    func test_map_createsViewModel() {
+        let feed = uniqueImageFeed().models
+        
+        let viewModel = FeedPresenter.map(feed)
+        
+        XCTAssertEqual(viewModel.feed, feed)
+    }
+    
 	func test_init_doesNotSendMessagesToView() {
 		let (_, view) = makeSUT()
 
@@ -70,7 +78,7 @@ class FeedPresenterTests: XCTestCase {
 		return value
 	}
 
-	private class ViewSpy: FeedView, ResourceLoadingView, FeedErrorView {
+	private class ViewSpy: FeedView, ResourceLoadingView, ResourceErrorView {
 		enum Message: Hashable {
 			case display(errorMessage: String?)
 			case display(isLoading: Bool)
@@ -79,7 +87,7 @@ class FeedPresenterTests: XCTestCase {
 		
 		private(set) var messages = Set<Message>()
 		
-		func display(_ viewModel: FeedErrorViewModel) {
+		func display(_ viewModel: ResourceErrorViewModel) {
 			messages.insert(.display(errorMessage: viewModel.message))
 		}
 		
