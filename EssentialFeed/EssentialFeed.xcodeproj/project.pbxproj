@@ -85,6 +85,10 @@
 		0D30475C2FA385F700E43125 /* ImageCommentsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D30475B2FA385F700E43125 /* ImageCommentsMapperTests.swift */; };
 		0D30475F2FA39B7F00E43125 /* FeedImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D30475E2FA39B7F00E43125 /* FeedImageDataMapper.swift */; };
 		0D3047612FA39BDF00E43125 /* FeedImageDataMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3047602FA39BDF00E43125 /* FeedImageDataMapperTests.swift */; };
+		0D3047732FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */; };
+		0D3047742FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */; };
+		0D3047752FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */; };
+		0D3047762FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +206,7 @@
 		0D30475B2FA385F700E43125 /* ImageCommentsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsMapperTests.swift; sourceTree = "<group>"; };
 		0D30475E2FA39B7F00E43125 /* FeedImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataMapper.swift; sourceTree = "<group>"; };
 		0D3047602FA39BDF00E43125 /* FeedImageDataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataMapperTests.swift; sourceTree = "<group>"; };
+		0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -425,6 +430,7 @@
 			children = (
 				0844768E21FCB24E00439BE9 /* XCTestCase+MemoryLeakTracking.swift */,
 				081C0DB222491EEF00AC754E /* SharedTestHelpers.swift */,
+				0D3047722FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -898,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				081C0DB122491E1200AC754E /* FeedCacheTestHelpers.swift in Sources */,
+				0D3047742FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */,
 				081C0DAF22491A2400AC754E /* ValidateFeedCacheUseCaseTests.swift in Sources */,
 				0D30475A2FA3750500E43125 /* FeedItemsMapperTests.swift in Sources */,
 				087148AC232BDF6900D6BE1A /* FeedPresenterTests.swift in Sources */,
@@ -928,6 +935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832C68A22A026C100E1C5E9 /* SharedTestHelpers.swift in Sources */,
+				0D3047752FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */,
 				0832C68022A0223A00E1C5E9 /* EssentialFeedCacheIntegrationTests.swift in Sources */,
 				0832C68922A0268400E1C5E9 /* FeedCacheTestHelpers.swift in Sources */,
 				0832C68822A024E800E1C5E9 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
@@ -939,6 +947,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0899395F220359C50031B03D /* EssentialFeedAPIEndToEndTests.swift in Sources */,
+				0D3047732FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */,
 				0845C25E22035FBD003C5EF1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,6 +973,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08BB7EA922C138AC00F8B83C /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				0D3047762FA9E2A900E43125 /* SharedLocalizationTestHelpers.swift in Sources */,
 				086AEFB923A7DFA400EE8933 /* FeedSnapshotTests.swift in Sources */,
 				0800314923B6909A00720217 /* XCTestCase+Snapshot.swift in Sources */,
 				0800314723B68FAB00720217 /* UIViewController+Snapshot.swift in Sources */,
