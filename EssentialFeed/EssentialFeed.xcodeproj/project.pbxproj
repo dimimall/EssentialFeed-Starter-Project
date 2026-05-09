@@ -290,6 +290,7 @@
 		0D3047662FA3D02700E43125 /* Shared Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D30476A2FA3D04200E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared Presentation"; sourceTree = "<group>"; };
 		0D30477D2FAF631200E43125 /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047802FAF633700E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
 		0D3047812FAF643800E43125 /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047842FAF645700E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
+		0D30479D2FAF90B000E43125 /* Feed UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Feed UI"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,9 +609,10 @@
 		08D917AC22B92A5D003BC31B /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				086AEFB823A7DFA400EE8933 /* FeedSnapshotTests.swift */,
+				0D30479D2FAF90B000E43125 /* Feed UI */,
 				08D917AF22B92A5D003BC31B /* Info.plist */,
 				086AEFBA23A7E5B100EE8933 /* Helpers */,
-				086AEFB823A7DFA400EE8933 /* FeedSnapshotTests.swift */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -767,6 +769,9 @@
 			);
 			dependencies = (
 				08D917AB22B92A5D003BC31B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0D30479D2FAF90B000E43125 /* Feed UI */,
 			);
 			name = EssentialFeediOSTests;
 			productName = EssentialFeediOSTests;
