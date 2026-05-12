@@ -15,7 +15,7 @@ struct SnapshotConfiguration {
     let safeAreaInsets: UIEdgeInsets
     let layoutMargins: UIEdgeInsets
     let traitCollection: UITraitCollection
-    
+
     static func iPhone8(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
         return SnapshotConfiguration(
             size: CGSize(width: 375, height: 667),
@@ -37,7 +37,7 @@ struct SnapshotConfiguration {
 
 private final class SnapshotWindow: UIWindow {
     private var configuration: SnapshotConfiguration = .iPhone8(style: .light)
-    
+
     convenience init(configuration: SnapshotConfiguration, root: UIViewController) {
         self.init(frame: CGRect(origin: .zero, size: configuration.size))
         self.configuration = configuration
@@ -46,11 +46,11 @@ private final class SnapshotWindow: UIWindow {
         self.isHidden = false
         root.view.layoutMargins = configuration.layoutMargins
     }
-    
+
     override var safeAreaInsets: UIEdgeInsets {
         return configuration.safeAreaInsets
     }
-    
+
     override var traitCollection: UITraitCollection {
         return UITraitCollection(traitsFrom: [super.traitCollection, configuration.traitCollection])
     }

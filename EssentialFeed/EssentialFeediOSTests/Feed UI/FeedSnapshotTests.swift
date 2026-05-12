@@ -7,16 +7,16 @@ import EssentialFeediOS
 @testable import EssentialFeed
 
 class FeedSnapshotTests: XCTestCase {
-	
+
 	func test_feedWithContent() {
 		let sut = makeSUT()
-		
+
 		sut.display(feedWithContent())
 
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_CONTENT_light")
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
 	}
-	
+
 	func test_feedWithFailedImageLoading() {
 		let sut = makeSUT()
 
@@ -25,7 +25,7 @@ class FeedSnapshotTests: XCTestCase {
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
 	}
-	
+
 	// MARK: - Helpers
 
 	private func makeSUT() -> ListViewController {
@@ -37,7 +37,7 @@ class FeedSnapshotTests: XCTestCase {
 		controller.tableView.showsHorizontalScrollIndicator = false
 		return controller
 	}
-	
+
 	private func feedWithContent() -> [ImageStub] {
 		return [
 			ImageStub(
@@ -52,7 +52,7 @@ class FeedSnapshotTests: XCTestCase {
 			)
 		]
 	}
-	
+
 	private func feedWithFailedImageLoading() -> [ImageStub] {
 		return [
 			ImageStub(
@@ -67,7 +67,7 @@ class FeedSnapshotTests: XCTestCase {
 			)
 		]
 	}
-	
+
 }
 
 private extension ListViewController {
@@ -77,7 +77,7 @@ private extension ListViewController {
             stub.controller = cellController
 			return cellController
 		}
-		
+
 		display(cells)
 	}
 }
@@ -93,10 +93,10 @@ private class ImageStub: FeedImageCellControllerDelegate {
             location: location)
             self.image = image
 	}
-	
+
 	func didRequestImage() {
         controller?.display(ResourceLoadingViewModel(isLoading: false))
-                
+
         if let image = image {
             controller?.display(image)
             controller?.display(ResourceErrorViewModel(message: .none))
@@ -104,6 +104,6 @@ private class ImageStub: FeedImageCellControllerDelegate {
             controller?.display(ResourceErrorViewModel(message: "any"))
         }
 	}
-	
+
 	func didCancelImageRequest() {}
 }

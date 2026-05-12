@@ -4,7 +4,6 @@
 
 import Foundation
 
-
 public final class FeedImagePresenter {
     public static func map(_ image: FeedImage) -> FeedImageViewModel {
         FeedImageViewModel(

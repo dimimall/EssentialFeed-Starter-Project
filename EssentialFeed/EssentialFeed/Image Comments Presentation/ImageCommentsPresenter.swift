@@ -12,7 +12,7 @@ public struct ImageCommentViewModel: Equatable {
     public let message: String
     public let date: String
     public let username: String
-    
+
     public init(message: String, date: String, username: String) {
         self.message = message
         self.date = date
@@ -27,12 +27,12 @@ public final class ImageCommentsPresenter {
             bundle: Bundle(for: Self.self),
             comment: "Title for the image comments view")
     }
-    
-    public static func map(_ comments: [ImageComment],currentDate: Date = Date(),
-            calendar: Calendar = .current,locale: Locale = .current) -> ImageCommentsViewModel {
+
+    public static func map(_ comments: [ImageComment], currentDate: Date = Date(),
+            calendar: Calendar = .current, locale: Locale = .current) -> ImageCommentsViewModel {
         let formatter = RelativeDateTimeFormatter()
         formatter.locale = Locale(identifier: "en_US")
-        
+
         return ImageCommentsViewModel(comments: comments.map { comment in
             ImageCommentViewModel(
                 message: comment.message,

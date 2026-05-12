@@ -4,7 +4,6 @@
 
 import Foundation
 
-
 public final class FeedImageDataMapper {
     public enum Error: Swift.Error {
         case invalidData

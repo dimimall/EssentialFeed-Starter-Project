@@ -276,6 +276,15 @@
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
 		};
+		0D3047B62FB3A2A200E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ImageCommentCellController.swift,
+				Views/ImageCommentCell.swift,
+				Views/ImageComments.storyboard,
+			);
+			target = 08D9179F22B92A5D003BC31B /* EssentialFeediOS */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -290,6 +299,8 @@
 		0D3047812FAF643800E43125 /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047842FAF645700E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
 		0D30479D2FAF90B000E43125 /* Feed UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Feed UI"; sourceTree = "<group>"; };
 		0D3047AF2FB2524500E43125 /* Shared UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Shared UI"; sourceTree = "<group>"; };
+		0D3047B22FB3A28600E43125 /* Image Comments UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047B62FB3A2A200E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments UI"; sourceTree = "<group>"; };
+		0D3047BE2FB3AD1900E43125 /* Image Comments UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Image Comments UI"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,6 +610,7 @@
 		08D917A122B92A5D003BC31B /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				0D3047B22FB3A28600E43125 /* Image Comments UI */,
 				08D917A322B92A5D003BC31B /* Info.plist */,
 				08FC5AA622D5F33000148E12 /* Shared UI */,
 			);
@@ -608,6 +620,7 @@
 		08D917AC22B92A5D003BC31B /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				0D3047BE2FB3AD1900E43125 /* Image Comments UI */,
 				0D3047AF2FB2524500E43125 /* Shared UI */,
 				0D30479D2FAF90B000E43125 /* Feed UI */,
 				08D917AF22B92A5D003BC31B /* Info.plist */,
@@ -772,6 +785,7 @@
 			fileSystemSynchronizedGroups = (
 				0D30479D2FAF90B000E43125 /* Feed UI */,
 				0D3047AF2FB2524500E43125 /* Shared UI */,
+				0D3047BE2FB3AD1900E43125 /* Image Comments UI */,
 			);
 			name = EssentialFeediOSTests;
 			productName = EssentialFeediOSTests;
