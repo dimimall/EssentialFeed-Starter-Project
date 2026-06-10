@@ -280,11 +280,11 @@
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
 		};
-		0D3047B62FB3A2A200E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		0D69A5952FCCC11900C613F6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ImageCommentCellController.swift,
 				Views/ImageCommentCell.swift,
+				Views/ImageCommentCellController.swift,
 				Views/ImageComments.storyboard,
 			);
 			target = 08D9179F22B92A5D003BC31B /* EssentialFeediOS */;
@@ -303,7 +303,7 @@
 		0D3047812FAF643800E43125 /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047842FAF645700E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
 		0D30479D2FAF90B000E43125 /* Feed UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Feed UI"; sourceTree = "<group>"; };
 		0D3047AF2FB2524500E43125 /* Shared UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Shared UI"; sourceTree = "<group>"; };
-		0D3047B22FB3A28600E43125 /* Image Comments UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D3047B62FB3A2A200E43125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments UI"; sourceTree = "<group>"; };
+		0D3047B22FB3A28600E43125 /* Image Comments UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D69A5952FCCC11900C613F6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments UI"; sourceTree = "<group>"; };
 		0D3047BE2FB3AD1900E43125 /* Image Comments UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Image Comments UI"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -1380,7 +1380,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EssentialFeediOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1409,7 +1409,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EssentialFeediOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1434,7 +1434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3956ZK5HH;
 				INFOPLIST_FILE = EssentialFeediOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1458,7 +1458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3956ZK5HH;
 				INFOPLIST_FILE = EssentialFeediOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
