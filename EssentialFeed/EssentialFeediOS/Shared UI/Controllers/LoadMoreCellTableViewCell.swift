@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import EssentialFeed
 
 class LoadMoreCellTableViewCell: UITableViewCell {
 
