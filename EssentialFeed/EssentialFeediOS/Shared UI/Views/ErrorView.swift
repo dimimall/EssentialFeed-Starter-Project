@@ -5,12 +5,10 @@
 import UIKit
 
 public final class ErrorView: UIButton {
-
 	public var message: String? {
         get { return isVisible ? title(for: .normal) : nil }
 		set { setMessageAnimated(newValue) }
 	}
-
     
     public var onHide: (() -> Void)?
     
@@ -21,16 +19,6 @@ public final class ErrorView: UIButton {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    private var titleAttributes: AttributeContainer {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.center
-
-        return AttributeContainer([
-            .paragraphStyle: paragraphStyle,
-            .font:  UIFont.preferredFont(forTextStyle: .body)
-        ])
     }
         
     private func configure() {
@@ -48,12 +36,11 @@ public final class ErrorView: UIButton {
         titleLabel?.font = .preferredFont(forTextStyle: .body)
         titleLabel?.adjustsFontForContentSizeCategory = true
     }
-           
-    
+    	
 	private var isVisible: Bool {
 		return alpha > 0
 	}
-
+	
 	private func setMessageAnimated(_ message: String?) {
 		if let message = message {
 			showAnimated(message)
@@ -66,18 +53,17 @@ public final class ErrorView: UIButton {
         setTitle(message, for: .normal)
         contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
 
-
 		UIView.animate(withDuration: 0.25) {
 			self.alpha = 1
 		}
 	}
-
-    @objc private func hideMessageAnimated() {
+	
+	@objc private func hideMessageAnimated() {
 		UIView.animate(
 			withDuration: 0.25,
 			animations: { self.alpha = 0 },
 			completion: { completed in
-                if completed { self.hideMessage() }
+				if completed { self.hideMessage() }
 			})
 	}
     

@@ -1,5 +1,5 @@
 //	
-// Copyright © 2026 Essential Developer. All rights reserved.
+// Copyright © 2020 Essential Developer. All rights reserved.
 //
 
 import UIKit
@@ -10,7 +10,6 @@ public struct CellController {
     let delegate: UITableViewDelegate?
     let dataSourcePrefetching: UITableViewDataSourcePrefetching?
     
-    
     public init(id: AnyHashable, _ dataSource: UITableViewDataSource) {
         self.id = id
         self.dataSource = dataSource
@@ -18,7 +17,6 @@ public struct CellController {
         self.dataSourcePrefetching = dataSource as? UITableViewDataSourcePrefetching
     }
 }
-
 
 extension CellController: Equatable {
     public static func == (lhs: CellController, rhs: CellController) -> Bool {

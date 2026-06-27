@@ -1,23 +1,23 @@
 //	
-// Copyright © 2026 Essential Developer. All rights reserved.
+// Copyright © 2020 Essential Developer. All rights reserved.
 //
 
 import XCTest
 import EssentialFeediOS
 @testable import EssentialFeed
 
-final class ImageCommentsSnapshotTests: XCTestCase {
+class ImageCommentsSnapshotTests: XCTestCase {
 
     func test_listWithComments() {
         let sut = makeSUT()
         
         sut.display(comments())
 
-        assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "IMAGE_COMMENTS_light")
-        assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "IMAGE_COMMENTS_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone(style: .light, contentSize: .extraExtraExtraLarge)), named: "IMAGE_COMMENTS_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "IMAGE_COMMENTS_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "IMAGE_COMMENTS_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "IMAGE_COMMENTS_light_extraExtraExtraLarge")
     }
-    
+
     // MARK: - Helpers
 
     private func makeSUT() -> ListViewController {
@@ -29,11 +29,11 @@ final class ImageCommentsSnapshotTests: XCTestCase {
         controller.tableView.showsHorizontalScrollIndicator = false
         return controller
     }
-
+    
     private func comments() -> [CellController] {
         commentControllers().map { CellController(id: UUID(), $0) }
     }
-            
+    
     private func commentControllers() -> [ImageCommentCellController] {
         return [
             ImageCommentCellController(
@@ -56,7 +56,8 @@ final class ImageCommentsSnapshotTests: XCTestCase {
                     date: "1 hour ago",
                     username: "a."
                 )
-            )
+            ),
         ]
     }
+
 }

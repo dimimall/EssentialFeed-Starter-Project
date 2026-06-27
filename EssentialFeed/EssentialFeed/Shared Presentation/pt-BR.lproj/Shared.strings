@@ -1,10 +1,2 @@
-/* 
-  Shared.strings
-  EssentialFeed
-
-  Created by Dimitra Malliarou on 5/5/26.
-  Copyright © 2026 Essential Developer. All rights reserved.
-*/
-
 
 "GENERIC_CONNECTION_ERROR" = "Não foi possível conectar com o servidor";

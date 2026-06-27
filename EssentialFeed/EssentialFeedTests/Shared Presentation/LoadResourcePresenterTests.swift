@@ -1,18 +1,18 @@
 //	
-// Copyright © 2026 Essential Developer. All rights reserved.
+// Copyright © 2020 Essential Developer. All rights reserved.
 //
 
 import XCTest
 import EssentialFeed
 
-final class LoadResourcePresenterTests: XCTestCase {
+class LoadResourcePresenterTests: XCTestCase {
 
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
 
         XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
     }
-
+    
     func test_didStartLoading_displaysNoErrorMessageAndStartsLoading() {
         let (sut, view) = makeSUT()
 
@@ -23,33 +23,22 @@ final class LoadResourcePresenterTests: XCTestCase {
             .display(isLoading: true)
         ])
     }
-
+    
     func test_didFinishLoadingResource_displaysResourceAndStopsLoading() {
         let (sut, view) = makeSUT(mapper: { resource in
             resource + " view model"
         })
-
+        
         sut.didFinishLoading(with: "resource")
-
+        
         XCTAssertEqual(view.messages, [
             .display(resourceViewModel: "resource view model"),
             .display(isLoading: false)
         ])
     }
-
-    func test_didFinishLoadingWithError_displaysLocalizedErrorMessageAndStopsLoading() {
-        let (sut, view) = makeSUT()
-
-        sut.didFinishLoading(with: anyNSError())
-
-        XCTAssertEqual(view.messages, [
-            .display(errorMessage: localized("GENERIC_CONNECTION_ERROR")),
-            .display(isLoading: false)
-        ])
-    }
-
+    
     func test_didFinishLoadingWithMapperError_displaysLocalizedErrorMessageAndStopsLoading() {
-        let (sut, view) = makeSUT(mapper: { _ in
+        let (sut, view) = makeSUT(mapper: { resource in
             throw anyNSError()
         })
 
@@ -61,11 +50,26 @@ final class LoadResourcePresenterTests: XCTestCase {
         ])
     }
 
+    func test_didFinishLoadingWithError_displaysLocalizedErrorMessageAndStopsLoading() {
+        let (sut, view) = makeSUT()
+        
+        sut.didFinishLoading(with: anyNSError())
+        
+        XCTAssertEqual(view.messages, [
+            .display(errorMessage: localized("GENERIC_CONNECTION_ERROR")),
+            .display(isLoading: false)
+        ])
+    }
+    
     // MARK: - Helpers
 
     private typealias SUT = LoadResourcePresenter<String, ViewSpy>
-
-    private func makeSUT(mapper: @escaping SUT.Mapper = { _ in "any" }, file: StaticString = #file, line: UInt = #line) -> (sut: SUT, view: ViewSpy) {
+    
+    private func makeSUT(
+        mapper: @escaping SUT.Mapper = { _ in "any" },
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (sut: SUT, view: ViewSpy) {
         let view = ViewSpy()
         let sut = SUT(resourceView: view, loadingView: view, errorView: view, mapper: mapper)
         trackForMemoryLeaks(view, file: file, line: line)
@@ -73,7 +77,7 @@ final class LoadResourcePresenterTests: XCTestCase {
         return (sut, view)
     }
 
-    private func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
+    private func localized(_ key: String, file: StaticString = #filePath, line: UInt = #line) -> String {
         let table = "Shared"
         let bundle = Bundle(for: SUT.self)
         let value = bundle.localizedString(forKey: key, value: nil, table: table)
@@ -84,25 +88,24 @@ final class LoadResourcePresenterTests: XCTestCase {
     }
 
     private class ViewSpy: ResourceView, ResourceLoadingView, ResourceErrorView {
-
         typealias ResourceViewModel = String
-
+        
         enum Message: Hashable {
             case display(errorMessage: String?)
             case display(isLoading: Bool)
             case display(resourceViewModel: String)
         }
-
+        
         private(set) var messages = Set<Message>()
-
+        
         func display(_ viewModel: ResourceErrorViewModel) {
             messages.insert(.display(errorMessage: viewModel.message))
         }
-
+        
         func display(_ viewModel: ResourceLoadingViewModel) {
             messages.insert(.display(isLoading: viewModel.isLoading))
         }
-
+        
         func display(_ viewModel: String) {
             messages.insert(.display(resourceViewModel: viewModel))
         }
